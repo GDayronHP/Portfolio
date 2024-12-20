@@ -1,0 +1,199 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import joseph from "../assets/joseph.jpg";
+import Project from "../components/project.astro";
+---
+
+<Layout>
+  <!-- <Image
+    src={joseph}
+    alt={"foto de perfil"}
+    class={"w-32 h-32 rounded-full aspect-video"}
+  /> -->
+  <!-- Presentación -->
+  <section class="h-screen flex flex-col justify-center">
+    <h1 class="text-5xl font-header font-bold mb-5">
+      Hola, <span class="text-yellow-400">soy Joseph</span>
+    </h1>
+    <p class="text-lg mb-5">
+      +2 años de experiencia. Futuro Ingeniero de Software de Perú ₚₑ.
+      Especializado en el desarrollo de aplicaciones web atractivas e
+      innovadoras
+    </p>
+    <div class="flex justify-center ">
+      <button
+        class="mr-4 px-3 py-1 bg-tertiary border-[1px] border-white/10 rounded-full hover:bg-tertiaryHover transition-colors"
+      >
+        <a
+          href="https://wa.me/945515528?text=Hola,%20quiero%20más%20información."
+          >Contactame
+        </a>
+      </button>
+      <button
+        class="mr-4 px-3 py-1 bg-tertiary border-[1px] border-white/10 rounded-full hover:bg-tertiaryHover transition-colors"
+      >
+        <a href="https://linkedin.com/in/joseph-dyron-huayra-puma-324079331"
+          >LinkedIn
+        </a>
+      </button>
+    </div>
+  </section>
+  <!-- Experiencia Laboral -->
+  <section
+    id="experience"
+    class="h-screen flex items-center flex-col justify-center"
+  >
+    <h1>Experiencia laboral</h1>
+    <div class="container mx-auto px-4 py-8">
+      <div class="relative flex flex-col items-center">
+        <!-- Línea central -->
+        <div class="absolute left-1/2 h-full w-1 -translate-x-1/2 bg-blue-500">
+        </div>
+
+        <!-- Evento 1 -->
+        <div class="mb-8 flex w-full items-center">
+          <div class="hidden w-1/2 pr-6 text-right md:block">
+            <h3 class="text-lg font-bold">Inicio del Proyecto</h3>
+            <p class="text-sm text-gray-500">Enero 2023</p>
+            <p class="text-gray-700">
+              Comenzamos a planificar el proyecto y definir los objetivos
+              principales.
+            </p>
+          </div>
+          <div
+            class="absolute left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-500 text-white"
+          >
+            1
+          </div>
+          <div class="w-1/2 pl-6 md:hidden">
+            <h3 class="text-lg font-bold">Inicio del Proyecto</h3>
+            <p class="text-sm text-gray-500">Enero 2023</p>
+            <p class="text-gray-700">
+              Comenzamos a planificar el proyecto y definir los objetivos
+              principales.
+            </p>
+          </div>
+        </div>
+
+        <!-- Evento 2 -->
+        <div class="mb-8 flex w-full items-center justify-end">
+          <div class="hidden w-1/2 pl-6 md:block">
+            <h3 class="text-lg font-bold">Diseño del Producto</h3>
+            <p class="text-sm text-gray-500">Marzo 2023</p>
+            <p class="text-gray-700">
+              Se completaron los diseños iniciales para la interfaz de usuario.
+            </p>
+          </div>
+          <div
+            class="absolute left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-500 text-white"
+          >
+            2
+          </div>
+          <div class="w-1/2 pr-6 text-right md:hidden">
+            <h3 class="text-lg font-bold">Diseño del Producto</h3>
+            <p class="text-sm text-gray-500">Marzo 2023</p>
+            <p class="text-gray-700">
+              Se completaron los diseños iniciales para la interfaz de usuario.
+            </p>
+          </div>
+        </div>
+
+        <!-- Evento 3 -->
+        <div class="mb-8 flex w-full items-center">
+          <div class="hidden w-1/2 pr-6 text-right md:block">
+            <h3 class="text-lg font-bold">Desarrollo</h3>
+            <p class="text-sm text-gray-500">Junio 2023</p>
+            <p class="text-gray-700">
+              Iniciamos el desarrollo utilizando las tecnologías seleccionadas.
+            </p>
+          </div>
+          <div
+            class="absolute left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-500 text-white"
+          >
+            3
+          </div>
+          <div class="w-1/2 pl-6 md:hidden">
+            <h3 class="text-lg font-bold">Desarrollo</h3>
+            <p class="text-sm text-gray-500">Junio 2023</p>
+            <p class="text-gray-700">
+              Iniciamos el desarrollo utilizando las tecnologías seleccionadas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Evento 4 -->
+        <div class="flex w-full items-center justify-end">
+          <div class="hidden w-1/2 pl-6 md:block">
+            <h3 class="text-lg font-bold">Lanzamiento</h3>
+            <p class="text-sm text-gray-500">Diciembre 2023</p>
+            <p class="text-gray-700">
+              Lanzamos el producto al mercado con éxito.
+            </p>
+          </div>
+          <div
+            class="absolute left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-blue-500 text-white"
+          >
+            4
+          </div>
+          <div class="w-1/2 pr-6 text-right md:hidden">
+            <h3 class="text-lg font-bold">Lanzamiento</h3>
+            <p class="text-sm text-gray-500">Diciembre 2023</p>
+            <p class="text-gray-700">
+              Lanzamos el producto al mercado con éxito.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Proyectos -->
+  <section
+    id="projects"
+    class="h-screen flex items-center flex-col justify-center"
+  >
+    <Project
+      image="imagen1"
+      title="Code Climber"
+      languages={["HTML", "JavaScript", "TailwindCss", "Laravel", "Mysql"]}
+      text="Plataforma web educativa que ofrece cursos gratuitos y de pago, con métodos de aprendizaje variados (textuales, auditivos, visuales) y herramientas interactivas como exámenes"
+      githubLink="https://github.com/GDayronHP/CodeClimber.git"
+    />
+
+    <Project
+      image="imagen2"
+      title="FastQuiz"
+      languages={["React", "Css", "Django", "Mysql"]}
+      text="Plataforma web que ofrece la posibilidad de crear cuestionarios de forma rápida y sencilla mediante el uso de IA, con la posibilidad de compartirlos con otros usuarios"
+      githubLink="https://github.com/GDayronHP/FastQuiz.git"
+    />
+  </section>
+  <!-- Sobre mí -->
+  <section
+    id="about"
+    class="h-screen flex items-center flex-col justify-center"
+  >
+    <h1>Sobre mí</h1>
+    <p class="block">
+      Soy Joseph Huayra, un desarrollador frontend apasionado por la creación de
+      interfaces web modernas y funcionales. Tengo experiencia trabajando con
+      tecnologías como HTML, CSS, JavaScript, y frameworks como React, Next.js y
+      TailwindCSS. Además, tengo conocimientos básicos en backend con PHP y
+      Node.js, lo que me permite tener una visión integral del desarrollo web.
+    </p><br />
+    <p class="block">
+      Me destaco por mi capacidad para colaborar en equipo, habiendo trabajado
+      con metodologías ágiles como Scrum para asegurar el cumplimiento de plazos
+      y objetivos. También cuento con experiencia utilizando Figma para
+      transformar diseños visuales en interfaces interactivas y de alto
+      rendimiento, garantizando una excelente experiencia de usuario.
+    </p><br />
+    <p class="block">
+      Actualmente, estoy enfocado en mejorar mi capacidad para ofrecer
+      soluciones técnicas de manera más rápida y eficiente. Aunque me gusta
+      abordar los problemas con un enfoque detallado, estoy aprendiendo a
+      equilibrar la profundidad del análisis con la rapidez necesaria para
+      aportar valor en equipos dinámicos.
+    </p>
+  </section>
+</Layout>

@@ -1,0 +1,98 @@
+---
+import moment from "moment";
+let act_year = moment().format("YYYY");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      #navBar {
+        animation: showBg auto linear both;
+        animation-timeline: scroll(root block);
+        animation-range: 0 100px;
+      }
+
+      @keyframes showBg {
+        0% {
+          background-color: transparent;
+          border: 1px solid transparent;
+        }
+        100% {
+          background-color: #212b38;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-50 dark:bg-gray-950
+  bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+  dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]
+  bg-no-repeat text-white px-40 lg:px-[35rem] py-5 font-body"
+  >
+    <nav class="sticky top-[1.25rem] z-10 flex justify-center mb-24">
+      <ul
+        id="navBar"
+        class="flex justify-around w-2/3 text-sm p-2 rounded-full font-bold font-header"
+      >
+        <button id="experienceBtn">Experiencia</button>
+        <button id="projectsBtn">Proyectos</button>
+        <button id="aboutBtn">Sobre mí</button>
+        <button>Contacto</button>
+      </ul>
+    </nav>
+    <slot />
+    <footer>© {act_year} Todos los derechos reservados</footer>
+  </body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Selección de botones
+    const experienceBtn = document.querySelector("#experienceBtn");
+    const projectsBtn = document.querySelector("#projectsBtn");
+    const aboutBtn = document.querySelector("#aboutBtn");
+
+    // Selección de secciones
+    const experience = document.querySelector("#experience");
+    const projects = document.querySelector("#projects");
+    const about = document.querySelector("#about");
+
+    // Eventos para el desplazamiento suave a las secciones
+    experienceBtn.addEventListener("click", () => {
+      experience.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    });
+
+    projectsBtn.addEventListener("click", () => {
+      projects.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    });
+
+    aboutBtn.addEventListener("click", () => {
+      about.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      });
+    });
+  });
+</script>
