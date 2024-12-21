@@ -6,6 +6,6 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   site:("https://gdayronhp.github.io"),
-  base: '/Portfolio/', // Asegúrate de usar un slash inicial y final
+  base: '/Portfolio', // Asegúrate de usar un slash inicial y final
   integrations: [tailwind()],
 });
