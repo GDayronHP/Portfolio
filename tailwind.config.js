@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js,astro}"],
-  theme: {
+  content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],  theme: {
     extend: {
       fontFamily: {
         header: ['Montserrat', 'sans-serif'],
