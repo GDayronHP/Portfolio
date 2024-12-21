@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import github from "../assets/images/pages/github.svg";
+
+const { image, title, languages, text, githubLink } = Astro.props;
+
+// Función asíncrona para obtener los datos de la API
+// const searchIcon = async (language) => {
+//   const res = await fetch(`https://api.svgl.app?search=${language}`);
+//   const data = await res.json();
+//   console.log(data[0].route);
+// };
+---
+
+<!-- Se mostrará un proyecto -->
+<div
+  data-aos="fade-up"
+  class="project__element grid grid-cols-1 md:grid-cols-2 w-full place-items-center mb-14"
+>
+  <!-- Imagen -->
+  <div class="mr-0 md:mr-5 mb-5 md:mb-0">
+    <img src={`src/assets/images/${image}.webp`} alt={image} class="rounded-lg"/>
+  </div>
+  <div class="project__element flex items-start flex-col">
+    <h2 class="font-header text-2xl font-semibold mb-3">{title}</h2>
+    <div class="flex text-sm mb-3 flex-wrap">
+      {
+        languages.map((language) => (
+          <div class="flex flex-row mb-1 bg-white/10 p-2 mr-1 rounded-md hover:bg-white/20  transition-colors">
+            <Image
+              src={`/src/assets/images/languages/${language}.svg`}
+              alt={language}
+              width={15}
+              height={15}
+              class:list={"mr-1 "}
+            />
+            <span class="text-xs">{language}</span>
+          </div>
+        ))
+      }
+    </div>
+    <p class="text-sm text-white/50 mb-3">{text}</p>
+    <button
+      class="flex items-center mr-4 px-3 py-1 bg-tertiary border-[1px] border-white/10 rounded-lg hover:bg-tertiaryHover transition-colors"
+    >
+      <Image
+        src={github}
+        alt={"githubIcon"}
+        width={15}
+        height={15}
+        class:list={"mr-2"}
+      />
+      <a href={githubLink}> Code </a>
+    </button>
+  </div>
+  <!-- Información -->
+</div>

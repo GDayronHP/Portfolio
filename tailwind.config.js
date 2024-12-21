@@ -5,8 +5,10 @@ export default {
     extend: {
       fontFamily: {
         header: ['Montserrat', 'sans-serif'],
-        body: ['Roboto', 'sans-serif'],
-        secondary: ['Poppins', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+        secondary: ['Roboto', 'sans-serif'],
+        funny: ['Poppins', 'sans-serif'],
+
       },
       colors: {
         primary: "#000000",

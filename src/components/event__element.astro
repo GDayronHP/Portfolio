@@ -1,0 +1,23 @@
+---
+const { number, title, date, description, direction } = Astro.props;
+---
+
+<div
+  data-aos="fade-up"
+  class=`event_element mb-8 flex w-full items-center ${direction == 'right' ? 'justify-end ' : 'justify-start '}`
+>
+  <div
+    class=`w-full md:w-1/2 text-start pl-6 ${direction == 'right' ? 'md:text-start md:pl-6' : 'md:text-end md:pr-6'} block`
+  >
+    <h3 class="text-lg md:text-xl font-bold">{title}</h3>
+    <p class="text-xs md:text-sml text-gray-300">{date}</p>
+    <p class="text-gray-500 text-sm md:text-base">
+      {description}
+    </p>
+  </div>
+  <div
+    class="absolute left-0 md:left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-yellow-400 text-white"
+  >
+    {number}
+  </div>
+</div>

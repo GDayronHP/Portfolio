@@ -1,6 +1,9 @@
 ---
 import moment from "moment";
 let act_year = moment().format("YYYY");
+
+import arrow from "../assets/arrow.svg";
+import { Image } from "astro:assets";
 ---
 
 <!doctype html>
@@ -10,18 +13,28 @@ let act_year = moment().format("YYYY");
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <style>
       #navBar {
-        animation: showBg auto linear both;
+        animation: showBg auto linear forwards;
         animation-timeline: scroll(root block);
         animation-range: 0 100px;
+      }
+
+      #arrow__to-top {
+        animation: showItem auto linear forwards;
+        animation-timeline: scroll(root block);
+        animation-range: 0 100vh;
       }
 
       @keyframes showBg {
@@ -34,31 +47,65 @@ let act_year = moment().format("YYYY");
           border: 1px solid rgba(255, 255, 255, 0.1);
         }
       }
+
+      @keyframes showItem {
+        0% {
+          visibility: hidden;
+        }
+        100% {
+          visibility: visible;
+        }
+      }
     </style>
   </head>
   <body
     class="bg-gray-50 dark:bg-gray-950
   bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
   dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]
-  bg-no-repeat text-white px-40 lg:px-[35rem] py-5 font-body"
+  bg-no-repeat text-white px-10 md:px-28 lg:px-64 xl:px-[25rem] py-5 font-body"
   >
-    <nav class="sticky top-[1.25rem] z-10 flex justify-center mb-24">
+    <nav
+      class="fixed left-1/2 -translate-x-1/2 top-[1.25rem] w-2/3 z-10 flex justify-center mb-24"
+    >
       <ul
         id="navBar"
-        class="flex justify-around w-2/3 text-sm p-2 rounded-full font-bold font-header"
+        class="flex justify-around space-x-5 text-xs md:text-sm px-5 py-2 rounded-full font-bold font-header text-gray-400"
       >
-        <button id="experienceBtn">Experiencia</button>
-        <button id="projectsBtn">Proyectos</button>
-        <button id="aboutBtn">Sobre mí</button>
-        <button>Contacto</button>
+        <button class="hover:text-white transition-colors" id="experienceBtn"
+          >Experiencia</button
+        >
+        <button class="hover:text-white transition-colors" id="projectsBtn"
+          >Proyectos</button
+        >
+        <button class="hover:text-white transition-colors" id="aboutBtn"
+          >Sobre mí</button
+        >
+        <button class="hover:text-white transition-colors">
+          <a
+            href="https://wa.me/945515528?text=Hola,%20quiero%20más%20información."
+            >Contacto</a
+          ></button
+        >
       </ul>
     </nav>
     <slot />
-    <footer>© {act_year} Todos los derechos reservados</footer>
+
+    <!-- Flecha para volver al inicio -->
+    <div
+      id="arrow__to-top"
+      class="fixed right-6 bottom-6 invisible p-4 rounded-full bg-white/5 hover:bg-white/10 cursor-pointer transition-colors"
+    >
+      <Image src={arrow} alt={"arrow"} width={30} height={30} />
+    </div>
+    <footer class="text-center text-gray-400 text-xs md:text-sm">
+      © {act_year} Todos los derechos reservados
+    </footer>
   </body>
 </html>
-
 <script>
+  import "aos/dist/aos.css"; // Importa los estilos de AOS
+  import AOS from "aos";
+  AOS.init();
   document.addEventListener("DOMContentLoaded", () => {
     // Selección de botones
     const experienceBtn = document.querySelector("#experienceBtn");
@@ -69,6 +116,9 @@ let act_year = moment().format("YYYY");
     const experience = document.querySelector("#experience");
     const projects = document.querySelector("#projects");
     const about = document.querySelector("#about");
+
+    //Flecha para arriba
+    const arrowBtn = document.querySelector("#arrow__to-top");
 
     // Eventos para el desplazamiento suave a las secciones
     experienceBtn.addEventListener("click", () => {
@@ -92,6 +142,13 @@ let act_year = moment().format("YYYY");
         behavior: "smooth",
         block: "start",
         inline: "nearest",
+      });
+    });
+
+    arrowBtn?.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
       });
     });
   });
