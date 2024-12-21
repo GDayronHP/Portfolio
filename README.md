@@ -1,48 +1,61 @@
-# Astro Starter Kit: Basics
+# Mi Portafolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+## Sobre Mí
+Hola, soy Joseph Dyron Huayra, un desarrollador y diseñador apasionado por crear soluciones innovadoras y visualmente atractivas. Futuro Ingeniero de Software que disfruta aprendiendo nuevas habilidades con el fin de entregar proyectos de calidad.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### Información de Contacto
+- **Correo**: josephdyronhuayrapuma@gmail.com  
+- **Teléfono**: +945 515 528 
+- **LinkedIn**: [Mi Perfil](https://linkedin.com/in/joseph-dyron-huayra-puma-324079331)  
+- **GitHub**: [Mi Repositorio](https://github.com/GDayronHP)  
+- **Portafolio en Línea**: [Mi Sitio Web](https://www.tusitio.com)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Habilidades
+### Lenguajes de Programación
+- JavaScript
+- HTML & CSS
+- Python
 
-## 🚀 Project Structure
+### Herramientas y Tecnologías
+- React
+- Node.js
+- Tailwind CSS
+- Figma
+- Astro
+- Django
 
-Inside of your Astro project, you'll see the following folders and files:
+---
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Proyectos Destacados
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### [CodeClimber](https://github.com/GDayronHP/CodeClimber.git)
+**Descripción**: Plataforma web educativa que ofrece cursos gratuitos y de pago, con métodos de aprendizaje variados (textuales, auditivos, visuales) y herramientas interactivas como exámenes
+**Tecnologías Usadas**: HTML, JavaScript, Tailwindcss, Laravel, MySql  
+**Captura**: ![Captura del Proyecto](./assets/images/codeclimber.jpg)
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
+### [FastQuiz](https://github.com/GDayronHP/FastQuiz.git)
+**Descripción**: Plataforma web que ofrece la posibilidad de crear cuestionarios de forma rápida y sencilla mediante el uso de IA, con la posibilidad de compartirlos con otros usuarios  
+**Tecnologías Usadas**: Django, PostgreSQL, Bootstrap  
+**Captura**: ![Captura del Proyecto](./assets/images/fastquiz.jpg)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+---
 
-## 👀 Want to learn more?
+## Certificaciones
+- PHP y MySQL (Experiencia) - TECSUP (2024-1)
+- Python (Nivel Intermedio) - CISCO NETACAD (2023)
+- HTML5, CSS3 y JavaScript (Nivel Intermedio) - TECSUP (2023-1)
+- Django (Nivel Intermedio) - TECSUP (2024-2)
+- Inglés (Nivel Intermedio) - CONVERSA (Actualmente estudiando)
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+---
+
+## Intereses
+- Videojuegos
+- Diseño UX/UI
+- Inteligencia Artificial
+- Deportes: Fútbol y Basquetball
