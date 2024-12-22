@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import joseph from "/src/assets/joseph.jpg";
 import ProjectElement from "../components/project__element.astro";
 import Button from "../components/button.astro";
 import EventElement from "../components/event__element.astro";
@@ -16,8 +17,12 @@ import project from "/src/assets/project.svg";
     class:list={"presentation__container h-screen flex flex-col justify-center"}
     data-aos="fade-up"
   >
-    <div class="flex items-center space-x-4 mb-10">
-
+    <div class="flex items-center space-x-4 mb-16">
+      <Image
+        src={joseph}
+        alt={"foto de perfil"}
+        class={"w-[5rem] h-[5rem] rounded-full aspect-video"}
+      />
       <p
         class="font-secondary text-sm px-3 py-1 bg-[#1F2936] rounded-full border-b-[1px] border-t-[1px] border-[#29655C] hover:scale-105 transition-transform cursor-pointer"
       >
@@ -50,7 +55,7 @@ import project from "/src/assets/project.svg";
   <!-- Experiencia Laboral -->
   <section
     id="experience"
-    class:list={"experience__container h-[150vh] md:h-screen flex items-center flex-col justify-center"}
+    class:list={"experience__container h-[150vh] md:h-screen flex items-center flex-col justify-center mb-16"}
   >
     <div data-aos="fade-up" class="w-full flex items-center mb-12">
       <Image
@@ -108,9 +113,8 @@ import project from "/src/assets/project.svg";
   </section>
   <!-- Proyectos -->
   <section
-    class:list={"projects__container"}
+    class:list={"projects__container h-[150vh] md:h-screen flex items-center flex-col justify-center mb-10"}
     id="projects"
-    class="h-[150vh] md:h-screen flex items-center flex-col justify-center"
   >
     <div data-aos="fade-up" class="w-full flex items-center mb-12">
       <Image
@@ -142,9 +146,8 @@ import project from "/src/assets/project.svg";
   </section>
   <!-- Sobre mí -->
   <section
-    class:list={"about__container"}
+    class:list={"about__container mb-16 h-[150vh] md:h-screen flex flex-col justify-center"}
     id="about"
-    class="h-[150vh] md:h-screen flex flex-col justify-center"
   >
     <div data-aos="fade-up" class="w-full flex items-center mb-12">
       <Image
@@ -190,6 +193,11 @@ import project from "/src/assets/project.svg";
           aportar valor en equipos dinámicos.
         </p>
       </div>
+      <Image
+        src={joseph}
+        alt={"foto de perfil"}
+        class={"w-72 md:w-56 bg-cover rounded-lg outline outline-2 outline-offset-4 outline-lime-400 shadow-[0_0_100px_15px_transparent] rotate-6 hover:scale-125 hover:-rotate-6 hover:brightness-110 hover:shadow-lime-400/35 transition-all"}
+      />
     </div>
   </section>
 </Layout>
