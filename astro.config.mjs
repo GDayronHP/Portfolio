@@ -1,11 +1,12 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
-
-import tailwind from '@astrojs/tailwind';
-
-// https://astro.build/config
 export default defineConfig({
-  site:("https://gdayronhp.github.io"),
-  base: '/Portfolio', // Asegúrate de usar un slash inicial y final
+  site: "https://gdayronhp.github.io",
+  base: '/Portfolio',
   integrations: [tailwind()],
+  vite: {
+    resolve: {
+      alias: {
+        '@assets': '/src/assets',
+      },
+    },
+  },
 });
