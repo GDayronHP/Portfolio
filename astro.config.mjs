@@ -1,12 +1,6 @@
 export default defineConfig({
-  site: "https://gdayronhp.github.io",
+  site: "https://gdayronhp.github.io/Portfolio",
   base: '/Portfolio',
   integrations: [tailwind()],
-  vite: {
-    resolve: {
-      alias: {
-        '@assets': '/src/assets',
-      },
-    },
-  },
+
 });
