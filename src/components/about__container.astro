@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import joseph from "../assets/joseph.webp";
+---
+
+<section
+    class:list={"about__container mb-16 h-[150vh] md:h-screen flex flex-col justify-center"}
+    id="about"
+  >
+    <div data-aos="fade-up" class="w-full flex items-center mb-12">
+      <Icon name={"ion:person-circle"} width={28} height={28} class={"mr-3"} />
+      <h1 class="text-start text-xl md:text-3xl font-bold font-header">
+        Sobre mí
+      </h1>
+    </div>
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 place-items-center font-body text-sm md:text-base"
+    >
+      <div class="mb-12 md:mr-12 col-span-2">
+        <p data-aos="fade-up" class="block">
+          Soy Joseph Huayra, un desarrollador frontend apasionado por la
+          creación de interfaces web modernas y funcionales. Tengo experiencia
+          trabajando con tecnologías como <span
+            class="text-yellow-400 font-header"
+            >HTML, CSS, JavaScript, y frameworks como Astro, React, Laravel y
+            TailwindCSS</span
+          >. Además, tengo conocimientos básicos en backend con PHP y Node.js,
+          lo que me permite tener una visión integral del desarrollo web.
+        </p><br />
+        <p data-aos="fade-up" class="block">
+          Me destaco por mi capacidad para colaborar en equipo, habiendo
+          trabajado con <span class="text-yellow-400 font-header"
+            >metodologías ágiles como Scrum</span
+          > para asegurar el cumplimiento de plazos y objetivos. También <span
+            class="text-yellow-400 font-header"
+            >cuento con experiencia utilizando Figma</span
+          > para transformar diseños visuales en interfaces interactivas y de alto
+          rendimiento, garantizando una excelente experiencia de usuario.
+        </p><br />
+        <p data-aos="fade-up" class="block">
+          Actualmente, estoy enfocado en mejorar mi capacidad para ofrecer
+          soluciones técnicas de manera más rápida y eficiente. Aunque me gusta
+          abordar los problemas con un enfoque detallado, estoy aprendiendo a
+          equilibrar la profundidad del análisis con la rapidez necesaria para
+          aportar valor en equipos dinámicos.
+        </p>
+      </div>
+      <Image
+        src={joseph}
+        alt={"foto de perfil"}
+        class={"w-72 md:w-56 bg-cover rounded-lg outline outline-2 outline-offset-4 outline-lime-400 shadow-[0_0_100px_15px_transparent] rotate-6 hover:scale-125 hover:-rotate-6 hover:brightness-110 hover:shadow-lime-400/35 transition-all"}
+      />
+    </div>
+  </section>

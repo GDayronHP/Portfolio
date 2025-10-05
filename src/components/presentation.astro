@@ -1,0 +1,92 @@
+---
+import joseph from "../assets/joseph.webp";
+import Button from "../components/button.astro";
+import EventElement from "../components/event__element.astro";
+
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+---
+<section
+    class:list={"presentation__container h-screen flex flex-col justify-center"}
+    data-aos="fade-up"
+  >
+    <div class="flex items-center space-x-4 mb-16">
+      <Image
+        src={joseph}
+        alt={"foto de perfil"}
+        class={"w-[5rem] h-[5rem] rounded-full aspect-video"}
+      />
+      <p
+        class="font-secondary text-sm px-3 py-1 bg-[#1F2936] rounded-full border-b-[1px] border-t-[1px] border-[#29655C] hover:scale-105 transition-transform cursor-pointer"
+      >
+        Disponible para trabajar
+      </p>
+    </div>
+    <h1 class="text-3xl md:text-5xl font-funny font-bold mb-5">
+      Hola, <span class="text-yellow-400">soy Joseph</span>
+    </h1>
+    <p class="text-md md:text-lg mb-5">
+      +2 años de experiencia. <span
+        class="text-yellow-400 font-semibold text-lg md:text-xl font-header"
+        >Futuro Ingeniero de Software de Perú <small>pe</small>.</span
+      >
+      Especializado en el desarrollo de aplicaciones web atractivas e innovadoras
+    </p>
+    <div class="flex">
+      <Button
+        text="Contáctame"
+        url="https://wa.me/945515528?text=Hola,%20quiero%20más%20información."
+        iconName="logos:whatsapp-icon"
+      />
+      <Button
+        text="LinkedIn"
+        url="https://linkedin.com/in/joseph-dyron-huayra-puma-324079331"
+        iconName="logos:linkedin-icon"
+      />
+    </div>
+  </section>
+  <!-- Experiencia Laboral -->
+  <section
+    id="experience"
+    class:list={"experience__container h-[150vh] md:h-screen flex items-center flex-col justify-center mb-16"}
+  >
+    <div data-aos="fade-up" class="w-full flex items-center mb-12">
+      <Icon name={"ion:briefcase"} width={28} height={28} class={"mr-3"} />
+      <h2 class="text-start text-xl md:text-3xl font-bold font-header">
+        Experiencia laboral
+      </h2>
+    </div>
+    <div class="container mx-auto px-4 py-8">
+      <div class="relative flex flex-col items-center">
+        <!-- Línea central -->
+        <div
+          class="absolute left-0 md:left-1/2 h-full w-1 -translate-x-1/2 bg-yellow-400"
+        >
+        </div>
+
+        <EventElement
+          number="1"
+          title="Inicio en el Desarrollo Web"
+          date="2023"
+          description="Aprendizaje autodidacta de HTML, CSS y JavaScript. Creación de primeros proyectos personales y experimentos con diseño web."
+          direction="left"
+        />
+
+        <EventElement
+          number="2"
+          title="Formación y proyectos personales"
+          date="2024"
+          description="Desarrollo de páginas web con Astro, Tailwind CSS y Django. Construcción de un portafolio personal con enfoque en usabilidad y rendimiento."
+          direction="right"
+        />
+
+        <EventElement
+          number="3"
+          title="Ingreso a Sapiens Consulting"
+          date="Enero 2025 – Actualidad"
+          description="Desarrollador Junior responsable de proyectos empresariales para clientes nacionales e internacionales, incluyendo Portal del Empleado, BackOffice, Evaluaciones y WIC Puerto Rico."
+          direction="left"
+        />
+      </div>
+    </div>
+  </section>

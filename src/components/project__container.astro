@@ -1,0 +1,72 @@
+---
+import ProjectElement from "./project__element.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<section
+  class:list={"projects__container h-[300vh] md:h-[150vh] flex flex-col justify-center items-center gap-10 mb-10 "}
+  id="projects"
+>
+  <div data-aos="fade-up" class="w-full flex items-center mb-12">
+    <Icon name={"ion:code-slash"} width={28} height={28} class={"mr-3"} />
+    <h2 class="text-start text-xl md:text-3xl font-bold font-header">
+      Proyectos
+    </h2>
+  </div>
+  <div class="flex flex-col w-full">
+    <ProjectElement
+      image="src/assets/codeclimber.jpg"
+      title="Code Climber"
+      languages={{
+        names: ["HTML", "JavaScript", "TailwindCss", "Laravel", "Mysql"],
+        icons: [
+          "logos:html-5",
+          "logos:javascript",
+          "logos:tailwindcss-icon",
+          "logos:laravel",
+          "logos:mysql-icon",
+        ],
+      }}
+      text="Plataforma web educativa que ofrece cursos gratuitos y de pago, con métodos de aprendizaje variados (textuales, auditivos, visuales) y herramientas interactivas como exámenes."
+      githubLink="https://github.com/GDayronHP/CodeClimber.git"
+    />
+
+    <ProjectElement
+      image="src/assets/fastquiz.jpg"
+      title="FastQuiz"
+      languages={{
+        names: ["React", "Css", "Django", "Mysql"],
+        icons: ["logos:react", "logos:css-3", "logos:django-icon", "logos:mysql-icon"],
+      }}
+      text="Plataforma web que ofrece la posibilidad de crear cuestionarios de forma rápida y sencilla mediante el uso de IA, con la posibilidad de compartirlos con otros usuarios."
+      githubLink="https://github.com/GDayronHP/FastQuiz.git"
+    />
+
+    <ProjectElement
+      image="src/assets/Evaluaciones.png"
+      title="Evaluaciones"
+      languages={{
+        names: ["Django", "Bootstrap", "MariaDB"],
+        icons: ["logos:django-icon", "logos:bootstrap", "logos:mariadb-icon"],
+      }}
+      text="Plataforma empresarial para la gestión de evaluaciones de desempeño de empleados."
+      pageLink="https://empleados.sapiensconsultingperu.com/evaluaciones/login/"
+    />
+
+    <ProjectElement
+      image="src/assets/WIC-Portal.png"
+      title="WIC Puerto Rico"
+      languages={{
+        names: ["Angular", "Css", "CSharp", "sqlServer"],
+        icons: [
+          "logos:angular-icon",
+          "logos:css-3",
+          "logos:c-sharp",
+          "ion:server-outline",
+        ],
+      }}
+      text="Aplicación web que gestiona solicitudes de alimentos y la venta de productos dirigidos a embarazadas, niños e infantes."
+      pageLink="https://wic.pr.gov/#/"
+    />
+  </div>
+</section>
