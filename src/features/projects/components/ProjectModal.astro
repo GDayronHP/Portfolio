@@ -152,10 +152,10 @@ import { Icon } from "astro-icon/components";
     height: 100%;
     padding: 1.5rem;
     background: var(--surface-muted);
-    cursor: pointer;
     overflow: hidden;
 
     & .modal-slide-inner {
+      cursor: pointer;
       overflow: hidden;
       height: 100%;
     }
@@ -165,12 +165,12 @@ import { Icon } from "astro-icon/components";
       max-height: 100%;
       padding: 0 2rem;
       display: block;
-      transition: transform 300ms cubic-bezier(0, 0, 0.2, 1), filter 300ms ease;
+      transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1), filter 420ms ease;
     }
 
     & .modal-slide-inner:hover img {
-      transform: scale(1.05);
-      filter: brightness(1.1);
+      transform: scale(1.015);
+      filter: brightness(1.03);
     }
   }
 
@@ -237,7 +237,31 @@ import { Icon } from "astro-icon/components";
   }
   .modal-slide-inner:hover .modal-slide-overlay {
     opacity: 1;
-    pointer-events: auto;
+
+  }
+  .modal-slide-badge {
+    position: absolute;
+    right: 0.875rem;
+    bottom: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.7rem;
+    border-radius: 9999px;
+    background: rgba(17, 17, 17, 0.52);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .modal-slide-badge svg {
+    flex-shrink: 0;
   }
   .modal-slide-open-btn {
     display: inline-flex;
@@ -337,10 +361,15 @@ import { Icon } from "astro-icon/components";
             <div class="modal-slide-inner"> 
               <img src="${src}" alt="${title} — captura ${i + 1}" loading="lazy" />
               <div class="modal-slide-overlay">
-                <a href="${src}" target="_blank" rel="noopener noreferrer" class="modal-slide-open-btn">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  Ver imagen completa
-                </a>
+                <span class="modal-slide-badge" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                  Ver imagen
+                </span>
+                <a href="${src}" target="_blank" rel="noopener noreferrer"/>
               </div>
             </div>
           </div>`
