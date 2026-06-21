@@ -1,0 +1,90 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Skill } from "../data/skills.data";
+
+interface Props {
+  skill: Skill;
+  index: number;
+}
+
+const { skill, index } = Astro.props;
+
+const iconMap: Record<string, string> = {
+  frontend:  "ion:desktop-outline",
+  backend:   "ion:server-outline",
+  data:      "ion:layers-outline",
+  ai:        "ion:sparkles-outline",
+};
+
+const icon = iconMap[skill.id] ?? "ion:code-slash-outline";
+---
+
+<div
+  class:list={[
+    "group flex flex-col p-7 rounded-xl border transition-shadow duration-[250ms]",
+    skill.isAI
+      ? "bg-primary border-(--border-strong) text-white"
+      : "bg-surface border-(--border-default) shadow-card hover:shadow-card-hover",
+  ]}
+  data-aos="fade-up"
+  data-aos-delay={index * 80}
+>
+  <!-- Icon -->
+  <div
+    class:list={[
+      "w-11 h-11 flex items-center justify-center rounded-lg mb-5",
+      skill.isAI
+        ? "bg-accent/20 text-accent"
+        : "bg-surface-muted text-secondary group-hover:text-primary transition-colors duration-150",
+    ]}
+  >
+    <Icon name={icon} width={22} height={22} />
+  </div>
+
+  <!-- Title -->
+  <h3
+    class:list={[
+      "font-header font-bold text-xl mb-1",
+      skill.isAI ? "text-white dark:text-black" : "text-primary",
+    ]}
+  >
+    {skill.title}
+  </h3>
+
+  <!-- {
+    skill.isAI && (
+      <p class="eyebrow text-accent mb-4" style="color: var(--accent)">
+        Diferenciador técnico
+      </p>
+    )
+  } -->
+
+  <!-- Skill list -->
+  <ul
+    class:list={[
+      "mt-auto space-y-2.5 pt-4 border-t",
+      skill.isAI
+        ? "border-white/10"
+        : "border-(--border-subtle)",
+    ]}
+  >
+    {
+      skill.items.map((item) => (
+        <li
+          class:list={[
+            "flex items-center gap-2.5 text-sm",
+            skill.isAI ? "text-white/80 dark:text-black/80" : "text-secondary",
+          ]}
+        >
+          <span
+            class:list={[
+              "flex-shrink-0 w-1.5 h-1.5 rounded-full",
+              skill.isAI ? "bg-accent" : "bg-secondary/50",
+            ]}
+          />
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</div>

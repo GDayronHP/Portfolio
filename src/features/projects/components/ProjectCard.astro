@@ -1,0 +1,161 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import { Icon } from "astro-icon/components";
+import Tag from "../../../components/ui/Tag.astro";
+import type { Project } from "../data/projects.data";
+
+// ── Cover images (portada de cada tarjeta) ───────────────────────────────
+import backofficeImg    from "../../../assets/images/projects/BackOfficeDynamicImages01.webp";
+import performanceImg   from "../../../assets/images/projects/Evaluaciones01.webp";
+import tecsupNavImg     from "../../../assets/images/projects/TecsupNav01.webp";
+
+// ── Carousel images ───────────────────────────────────────────────────────
+import backofficeImg02  from "../../../assets/images/projects/BackOfficeDynamicImages02.webp";
+import backofficeImg03  from "../../../assets/images/projects/BackOfficeDynamicImages03.webp";
+import backofficeImg04  from "../../../assets/images/projects/BackOfficeDynamicImages04.webp";
+import tecsupNav02      from "../../../assets/images/projects/TecsupNav02.webp";
+import tecsupNav03      from "../../../assets/images/projects/TecsupNav03.webp";
+import tecsupNav04      from "../../../assets/images/projects/TecsupNav04.webp";
+import tecsupNav05      from "../../../assets/images/projects/TecsupNav05.webp";
+import tecsupNav06      from "../../../assets/images/projects/TecsupNav06.webp";
+import tecsupNav07      from "../../../assets/images/projects/TecsupNav07.webp";
+import tecsupNav08      from "../../../assets/images/projects/TecsupNav08.webp";
+import tecsupNav09      from "../../../assets/images/projects/TecsupNav09.webp";
+
+interface Props {
+  project: Project;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+
+// Cover image map — "financial-ai" omitted until screenshot is available
+const coverMap: Partial<Record<Project["imageKey"], ImageMetadata>> = {
+  "backoffice-images": backofficeImg,
+  "performance-eval":  performanceImg,
+  "geo-app":           tecsupNavImg,
+};
+
+// All carousel images (including cover) per project
+const carouselMap: Record<Project["imageKey"], string[]> = {
+  "financial-ai":      [],
+  "backoffice-images": [backofficeImg.src, backofficeImg02.src, backofficeImg03.src, backofficeImg04.src],
+  "performance-eval":  [performanceImg.src],
+  "geo-app":           [tecsupNavImg.src, tecsupNav02.src, tecsupNav03.src, tecsupNav04.src,
+                        tecsupNav05.src, tecsupNav06.src, tecsupNav07.src, tecsupNav08.src, tecsupNav09.src],
+};
+
+const coverImg = coverMap[project.imageKey];
+const carouselImages = carouselMap[project.imageKey];
+
+// Serialise project data with computed carousel URLs for the inline script
+const projectJson = JSON.stringify({ ...project, carouselImages });
+---
+
+<article
+  class="group flex flex-col bg-surface rounded-xl overflow-hidden
+         border border-(--border-default)
+         shadow-card hover:shadow-card-hover cursor-pointer
+         transition-all duration-250"
+  data-aos="fade-up"
+  data-aos-delay={index * 80}
+  data-project={projectJson}
+  tabindex="0"
+  role="button"
+  aria-label={`Ver detalles de ${project.title}`}
+>
+  <!-- Thumbnail -->
+  <div class="relative h-48 bg-surface-muted overflow-hidden">
+    {coverImg ? (
+      <Image
+        src={coverImg}
+        alt={project.title}
+        class="w-full h-full object-cover opacity-90 group-hover:scale-[1.03] transition-transform duration-400"
+      />
+    ) : (
+      <div class="w-full h-full flex items-center justify-center">
+        <span class="text-xs text-secondary opacity-40">Imagen próximamente</span>
+      </div>
+    )}
+    <div class="absolute inset-0 bg-(--surface-overlay) opacity-0 group-hover:opacity-40 transition-opacity duration-250"></div>
+    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-250">
+      <span class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-surface text-primary">
+        <Icon name="ion:expand-outline" width={13} height={13} />
+        Ver detalles
+      </span>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="flex flex-col flex-1 p-6">
+    <!-- Tags -->
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      {project.tags.slice(0, 4).map((tag) => <Tag text={tag} />)}
+      {project.tags.length > 4 && (
+        <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-surface-muted text-secondary border border-(--border-subtle)">
+          +{project.tags.length - 4}
+        </span>
+      )}
+    </div>
+
+    <h3 class="font-header font-bold text-lg text-primary mb-2 leading-snug">
+      {project.title}
+    </h3>
+
+    <p class="text-sm text-secondary leading-relaxed mb-5">
+      {project.description}
+    </p>
+
+    <!-- Highlights (first 3) -->
+    <ul class="flex flex-col gap-1.5 mb-6 flex-1">
+      {project.highlights.slice(0, 3).map((h) => (
+        <li class="flex items-start gap-2 text-xs text-secondary">
+          <span class="mt-0.75 h-1.5 w-1.5 rounded-full bg-accent shrink-0"></span>
+          {h}
+        </li>
+      ))}
+      {project.highlights.length > 3 && (
+        <li class="flex items-start gap-2 text-xs text-secondary opacity-60">
+          <span class="mt-0.75 h-1.5 w-1.5 rounded-full bg-accent shrink-0 opacity-0"></span>
+          +{project.highlights.length - 3} más…
+        </li>
+      )}
+    </ul>
+
+    <!-- Footer -->
+    <div class="flex items-center justify-between pt-4 border-t border-(--border-subtle)">
+      <span class="flex items-center gap-1 text-xs font-medium text-accent">
+        <Icon name="ion:information-circle-outline" width={13} height={13} />
+        Ver detalles completos
+      </span>
+      {project.pageLink && (
+        <a
+          href={project.pageLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-1 text-xs font-medium text-secondary hover:text-primary transition-colors duration-150"
+          onclick="event.stopPropagation()"
+        >
+          <Icon name="ion:open-outline" width={12} height={12} />
+          Sitio web
+        </a>
+      )}
+    </div>
+  </div>
+</article>
+
+<script>
+  document.querySelectorAll("[data-project]").forEach((card) => {
+    const el = card as HTMLElement;
+    const open = () => {
+      const data = JSON.parse(el.dataset.project ?? "{}");
+      document.dispatchEvent(new CustomEvent("open-project", { detail: data }));
+    };
+    el.addEventListener("click", open);
+    el.addEventListener("keydown", (e: Event) => {
+      const ke = e as KeyboardEvent;
+      if (ke.key === "Enter" || ke.key === " ") { ke.preventDefault(); open(); }
+    });
+  });
+</script>

@@ -1,0 +1,16 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<span
+  class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium
+         bg-[color-mix(in_srgb,var(--accent)_8%,transparent)]
+         text-[color-mix(in_srgb,var(--accent)_80%,var(--primary))]
+         border border-[var(--border-accent)]"
+>
+  {text}
+</span>

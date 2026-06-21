@@ -1,0 +1,23 @@
+---
+import Section from "../../../components/layout/Section.astro";
+import Container from "../../../components/layout/Container.astro";
+import SkillCard from "./SkillCard.astro";
+import { skills } from "../data/skills.data";
+---
+
+<Section id="skills">
+  <Container>
+    <!-- Section header -->
+    <div class="text-center mb-12" data-aos="fade-up">
+      <p class="eyebrow mb-3">Stack Técnico</p>
+      <h2 class="font-header font-bold text-3xl md:text-4xl text-primary tracking-tight">
+        Herramientas con las que entrego valor.
+      </h2>
+    </div>
+
+    <!-- Cards grid: 1 col → 2 col md → 4 col lg -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {skills.map((skill, i) => <SkillCard skill={skill} index={i} />)}
+    </div>
+  </Container>
+</Section>

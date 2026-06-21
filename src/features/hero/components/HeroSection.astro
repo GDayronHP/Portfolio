@@ -1,0 +1,99 @@
+---
+import Button from "../../../components/ui/Button.astro";
+import Container from "../../../components/layout/Container.astro";
+
+---
+
+<section
+  id="home"
+  class="relative min-h-screen flex flex-col justify-center bg-background overflow-hidden"
+>
+  <div id="tsparticles" class="absolute inset-0 z-0" aria-hidden="true"></div>
+  <Container class="relative z-10">
+    <div class="max-w-3xl" data-aos="fade-up" data-aos-duration="600">
+
+      <!-- Availability badge -->
+      <div class="flex items-center gap-2 mb-8">
+        <span
+          class="flex items-center gap-2 text-xs font-medium px-3 py-1.5 rounded-full
+                 border border-(--border-accent)
+                 bg-[color-mix(in_srgb,var(--accent)_6%,transparent)]
+                 text-accent"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+          Disponible para trabajar
+        </span>
+        <span class="text-xs text-secondary">· Full Stack Developer · Perú</span>
+      </div>
+
+      <!-- Headline -->
+      <h1
+        class="font-header font-bold text-5xl md:text-6xl lg:text-7xl
+               text-primary leading-[1.1] tracking-tight mb-6"
+      >
+        Construyo sistemas<br />
+        que escalan<br />
+        <span class="text-accent">e interfaces que no fallan.</span>
+      </h1>
+
+      <!-- Description -->
+      <p class="lead mb-10 max-w-xl text-secondary">
+        Desarrollador Full Stack especializado en arquitecturas .NET, bases de
+        datos relacionales y frontends Angular de alta calidad — con integración
+        de IA mediante Azure OpenAI
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-14" data-aos="fade-up" data-aos-delay="100">
+        <Button href="#projects" variant="primary">Ver Proyectos</Button>
+        <Button href="#contact" variant="ghost">Contactar</Button>
+      </div>
+
+      <!-- Tech strip -->
+      <div
+        class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-8
+               border-t border-(--border-subtle)"
+        data-aos="fade-up"
+        data-aos-delay="150"
+      >
+        <span class="text-xs font-semibold text-secondary uppercase tracking-widest">Stack</span>
+        {
+          [
+            ".NET / ASP.NET",
+            "Angular",
+            "PostgreSQL / PostGIS",
+            "Azure OpenAI",
+            "RAG",
+          ].map((tech) => (
+            <span class="text-sm text-secondary/80 font-medium">{tech}</span>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</section>
+<script>
+  import { tsParticles } from "@tsparticles/engine";
+  import { loadSlim } from "@tsparticles/slim";
+  import getTsParticlesConfig from "../../../config/tsParticles.config";
+
+  (async () => {
+    await loadSlim(tsParticles);
+
+    const html      = document.documentElement;
+    const container = document.getElementById("tsparticles") as HTMLElement;
+    const isDark    = () => html.classList.contains("dark");
+
+    const initParticles = async () => {
+      await tsParticles.load({
+        element: container,
+        options: getTsParticlesConfig(isDark()),
+      });
+    };
+
+    await initParticles();
+
+    const observer = new MutationObserver(initParticles);
+    observer.observe(html, { attributes: true, attributeFilter: ["class"] });
+  })();
+</script>

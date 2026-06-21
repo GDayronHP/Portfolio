@@ -1,0 +1,20 @@
+---
+interface Props {
+  id?: string;
+  muted?: boolean;
+  class?: string;
+}
+
+const { id, muted = false, class: className } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={[
+    "py-(--section-y) min-h-screen grid place-content-center lg:py-(--section-y-lg)",
+    muted ? "bg-(--surface-muted)" : "bg-(--background)",
+    className,
+  ]}
+>
+  <slot />
+</section>

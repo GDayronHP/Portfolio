@@ -1,0 +1,41 @@
+---
+import Section from "../../../components/layout/Section.astro";
+import Container from "../../../components/layout/Container.astro";
+import EventItem from "./EventItem.astro";
+import { experience } from "../data/experience.data";
+---
+
+<Section id="experience">
+  <Container>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+
+      <!-- Section header -->
+      <div data-aos="fade-right" data-aos-duration="600">
+        <p class="eyebrow mb-3">Trayectoria</p>
+        <h2
+          class="font-header font-bold text-3xl md:text-4xl text-primary
+                 leading-tight tracking-tight mb-6"
+        >
+          De cero a proyectos<br />empresariales reales.
+        </h2>
+        <p class="text-secondary leading-relaxed max-w-sm">
+          En poco más de dos años pasé del aprendizaje autodidacta a trabajar en
+          sistemas críticos para clientes gubernamentales e internacionales.
+        </p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="pt-1">
+        {
+          experience.map((item, i) => (
+            <EventItem
+              item={item}
+              index={i}
+              isLast={i === experience.length - 1}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</Section>

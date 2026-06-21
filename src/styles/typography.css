@@ -1,0 +1,103 @@
+/* =========================================================
+   Typography — Global heading, body, and prose rules.
+   Consumes tokens from tokens.css. Do not add layout or
+   component-specific styles here — use feature <style> blocks.
+   ========================================================= */
+
+@layer base {
+  /* ── Body ──────────────────────────────────────────────*/
+  body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.625;
+    font-weight: 400;
+    color: var(--text);
+    background-color: var(--background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── Heading scale ─────────────────────────────────────*/
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-header);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    color: var(--text);
+  }
+
+  h1 { font-size: 3rem;     letter-spacing: -0.04em; }
+  h2 { font-size: 1.875rem; }
+  h3 { font-size: 1.25rem;  }
+  h4 { font-size: 1.125rem; }
+  h5 { font-size: 1rem;     font-weight: 600; }
+  h6 { font-size: 0.875rem; font-weight: 600; }
+
+  /* ── Body copy ─────────────────────────────────────────*/
+  p {
+    line-height: 1.625;
+  }
+
+  /* ── Section eyebrow label ─────────────────────────────*/
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--secondary);
+  }
+
+  /* ── Lead paragraph ────────────────────────────────────*/
+  .lead {
+    font-size: 1.125rem;
+    line-height: 1.625;
+    color: var(--secondary);
+  }
+
+  /* ── Monospace / code ──────────────────────────────────*/
+  code, kbd, samp {
+    font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', ui-monospace, monospace;
+    font-size: 0.875em;
+  }
+
+  pre {
+    font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', ui-monospace, monospace;
+    font-size: 0.875rem;
+    line-height: 1.625;
+    overflow-x: auto;
+  }
+
+  /* ── Links ─────────────────────────────────────────────*/
+  a {
+    color: var(--accent);
+    transition: var(--transition-colors);
+    text-decoration-line: none;
+  }
+
+  a:hover {
+    opacity: 0.80;
+  }
+
+  /* ── Selection ─────────────────────────────────────────*/
+  ::selection {
+    background-color: color-mix(in srgb, var(--accent) 16%, transparent);
+    color: var(--text);
+  }
+
+  /* ── Focus visible ─────────────────────────────────────*/
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ── Reduced motion ────────────────────────────────────*/
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+---
+interface Props {
+  narrow?: boolean;
+  class?: string;
+}
+
+const { narrow = false, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    "mx-auto w-full grid place-content-center px-[var(--container-px)]",
+    narrow ? "max-w-2xl" : "max-w-[var(--container-max)]",
+    className,
+  ]}
+>
+  <slot />
+</div>

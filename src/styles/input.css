@@ -1,3 +1,161 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import './tokens.css';
+@import './typography.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Base color tokens ──────────────────────────────────── */
+:root {
+  --text:       #05060a;
+  --background: #f0f2f9;
+  --primary:    #19294d;
+  --secondary:  #828282;
+  --accent:     #143ebd;
+}
+
+.dark {
+  --text:       #f5f6fa;
+  --background: #03040a;
+  --primary:    #b2c2e6;
+  --secondary:  #7d7d7d;
+  --accent:     #426ceb;;
+}
+
+/* ── Tailwind design token registry ────────────────────────
+   Registers CSS custom properties as Tailwind utility
+   generators. Every entry here creates corresponding
+   utility classes (bg-*, text-*, shadow-*, rounded-*, etc.).
+   ─────────────────────────────────────────────────────── */
+
+/* montserrat-600 - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/src/assets/fonts/montserrat-v31-latin-600.woff2') format('woff2');
+}
+/* montserrat-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/src/assets/fonts/montserrat-v31-latin-700.woff2') format('woff2');
+}
+
+/* inter-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/src/assets/fonts/inter-v20-latin-500.woff2') format('woff2');
+}
+/* inter-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/src/assets/fonts/inter-v20-latin-600.woff2') format('woff2');
+}
+/* inter-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/src/assets/fonts/inter-v20-latin-700.woff2') format('woff2');
+}
+
+@theme {
+  /* ── Typography ─────────────────────────────── */
+  --font-header: Montserrat, sans-serif;
+  --font-body:   Inter, sans-serif;
+
+  /* ── Colors: base palette ───────────────────── */
+  --color-primary:    var(--primary);
+  --color-secondary:  var(--secondary);
+  --color-accent:     var(--accent);
+  --color-text:       var(--text);
+  --color-background: var(--background);
+
+  /* ── Colors: surfaces ───────────────────────── */
+  --color-surface:          var(--surface);
+  --color-surface-muted:    var(--surface-muted);
+  --color-surface-elevated: var(--surface-elevated);
+
+  /* ── Colors: borders ────────────────────────── */
+  --color-border:        var(--border-default);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+  --color-border-accent: var(--border-accent);
+
+  /* ── Shadows (adapt automatically via --shadow-color) ─ */
+  --shadow-sm:         0 1px 3px 0 rgb(var(--shadow-color) / 0.07);
+  --shadow-md:         0 4px 8px -2px rgb(var(--shadow-color) / 0.10), 0 2px 4px -2px rgb(var(--shadow-color) / 0.06);
+  --shadow-lg:         0 12px 24px -4px rgb(var(--shadow-color) / 0.14), 0 4px 8px -4px rgb(var(--shadow-color) / 0.08);
+  --shadow-card:       0 2px 8px 0 rgb(var(--shadow-color) / 0.07);
+  --shadow-card-hover: 0 8px 24px -4px rgb(var(--shadow-color) / 0.13);
+  --shadow-accent:     0 4px 16px 0 color-mix(in srgb, var(--accent) 28%, transparent);
+  --shadow-nav:        0 1px 0 0 color-mix(in srgb, var(--primary) 8%, transparent);
+
+  /* ── Border radius ──────────────────────────── */
+  --radius-xs:   0.25rem;    /*  4px */
+  --radius-sm:   0.375rem;   /*  6px */
+  --radius-md:   0.5rem;     /*  8px */
+  --radius-lg:   0.75rem;    /* 12px */
+  --radius-xl:   1rem;       /* 16px */
+  --radius-2xl:  1.5rem;     /* 24px */
+  --radius-3xl:  2rem;       /* 32px */
+  --radius-full: 9999px;
+
+  /* ── Z-index ────────────────────────────────── */
+  --z-dropdown: 20;
+  --z-sticky:   30;
+  --z-nav:      50;
+  --z-modal:    60;
+  --z-toast:    70;
+
+  /* ── Animations ─────────────────────────────── */
+  --animate-fade-in:       fade-in       var(--duration-normal) var(--ease-out)  both;
+  --animate-fade-up:       fade-up       var(--duration-slow)   var(--ease-out)  both;
+  --animate-fade-down:     fade-down     var(--duration-slow)   var(--ease-out)  both;
+  --animate-slide-in-left: slide-in-left var(--duration-slow)   var(--ease-out)  both;
+  --animate-slide-in-right: slide-in-right var(--duration-slow) var(--ease-out)  both;
+  --animate-scale-in:      scale-in      var(--duration-normal) var(--ease-spring) both;
+}
+
+/* ── Keyframes ──────────────────────────────────────────────
+   Consumed by --animate-* tokens above. Keep transforms
+   minimal — one axis per animation, no compounding effects. */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1);    }
+}

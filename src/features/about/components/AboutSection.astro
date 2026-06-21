@@ -1,0 +1,95 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Section from "../../../components/layout/Section.astro";
+import Container from "../../../components/layout/Container.astro";
+
+import joseph from "../../../assets/images/myself/joseph.webp";
+---
+
+<Section id="about" muted>
+  <Container>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+
+      <!-- Profile image -->
+      <div
+        class="flex justify-center"
+        data-aos="fade-right"
+        data-aos-duration="600"
+      >
+        <div
+          class="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden
+                 border border-(--border-default)
+                 shadow-lg"
+        >
+          <!-- Accent overlay -->
+          <div
+            class="absolute inset-0 bg-gradient-to-tr
+                   from-[color-mix(in_srgb,var(--accent)_12%,transparent)]
+                   to-transparent pointer-events-none z-10"
+          ></div>
+          <Image
+            src={joseph}
+            alt="Joseph Huayra — Desarrollador Full Stack"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div data-aos="fade-left" data-aos-duration="600">
+        <p class="eyebrow mb-3">Sobre Mí</p>
+        <h2
+          class="font-header font-bold text-3xl md:text-4xl text-primary
+                 leading-tight tracking-tight mb-6"
+        >
+          Del esquema de base de datos<br />
+          hasta la pantalla del cliente.
+        </h2>
+
+        <p class="text-secondary leading-relaxed mb-4">
+          Soy Joseph Huayra, desarrollador Full Stack con experiencia construyendo
+          aplicaciones web empresariales escalables. Trabajo con <strong
+            class="font-semibold text-primary">.NET / ASP.NET Core</strong
+          > en el backend y <strong class="font-semibold text-primary"
+            >Angular con TailwindCSS</strong
+          > en el frontend, cerrando el ciclo desde el diseño de datos hasta la
+          interfaz.
+        </p>
+        <p class="text-secondary leading-relaxed mb-8">
+          Me diferencio por integrar <strong class="font-semibold text-accent"
+            >inteligencia artificial aplicada</strong
+          > — Azure OpenAI, arquitecturas RAG y procesamiento de documentos — en
+          flujos de trabajo reales. Trabajo con metodologías ágiles (Scrum) y un
+          proceso disciplinado en Git para entregar código que escala.
+        </p>
+
+        <!-- Social links -->
+        <div class="flex items-center gap-4">
+          <a
+            href="https://github.com/GDayronHP"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-sm font-medium text-secondary
+                   hover:text-primary transition-colors duration-150"
+            aria-label="GitHub"
+          >
+            <Icon name="ion:logo-github" width={20} height={20} />
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/joseph-dyron-huayra-puma-324079331"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 text-sm font-medium text-secondary
+                   hover:text-primary transition-colors duration-150"
+            aria-label="LinkedIn"
+          >
+            <Icon name="ion:logo-linkedin" width={20} height={20} />
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </Container>
+</Section>

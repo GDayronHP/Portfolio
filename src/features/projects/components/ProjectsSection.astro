@@ -1,0 +1,27 @@
+---
+import Section from "../../../components/layout/Section.astro";
+import Container from "../../../components/layout/Container.astro";
+import ProjectCard from "./ProjectCard.astro";
+import ProjectModal from "./ProjectModal.astro";
+import { projects } from "../data/projects.data";
+---
+
+<Section id="projects" muted>
+  <Container>
+    <!-- Section header -->
+    <div class="text-center mb-12" data-aos="fade-up">
+      <p class="eyebrow mb-3">Trabajo Reciente</p>
+      <h2 class="font-header font-bold text-3xl md:text-4xl text-primary tracking-tight">
+        Proyectos Destacados
+      </h2>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+      {projects.map((project, i) => <ProjectCard project={project} index={i} />)}
+    </div>
+  </Container>
+</Section>
+
+<!-- Project detail modal (native Astro + vanilla JS) -->
+<ProjectModal />

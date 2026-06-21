@@ -1,19 +1,21 @@
 ---
-// Import Layout
 import Layout from "../layouts/Layout.astro";
 
-// Import custom components
-import Presentation from "../components/presentation.astro";
-import ProjectContainer from "../components/project__container.astro";
-import AboutContainer from "../components/about__container.astro";
+import HeroSection       from "../features/hero/components/HeroSection.astro";
+import AboutSection      from "../features/about/components/AboutSection.astro";
+import SkillsSection     from "../features/skills/components/SkillsSection.astro";
+import ProjectsSection   from "../features/projects/components/ProjectsSection.astro";
+import ExperienceSection from "../features/experience/components/ExperienceSection.astro";
+import ContactSection    from "../features/contact/components/ContactSection.astro";
 ---
 
 <Layout>
-  
-  <Presentation />
-
-  <ProjectContainer />
-
-  <AboutContainer />
-
+  <HeroSection />
+  <AboutSection />
+  <SkillsSection />
+  <ProjectsSection />
+  <ExperienceSection />
+  <ContactSection />
 </Layout>
+
+

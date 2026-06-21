@@ -1,179 +1,170 @@
 ---
-import moment from "moment";
-let act_year = moment().format("YYYY");
+import "../styles/input.css";
+import { Icon } from "astro-icon/components";
 
-import arrow from "../assets/arrow.svg";
-import { Image } from "astro:assets";
+const year = new Date().getFullYear();
+
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
+    <title>Joseph Huayra — Desarrollador Full Stack</title>
+    <meta
+      name="description"
+      content="Desarrollador Full Stack especializado en .NET, Angular, PostgreSQL y soluciones de IA con Azure OpenAI."
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      #navBar {
-        animation: showBg auto linear forwards;
-        animation-timeline: scroll(root block);
-        animation-range: 0 100px;
-      }
-
-      #arrow__to-top {
-        animation: showItem auto linear forwards;
-        animation-timeline: scroll(root block);
-        animation-range: 0 100vh;
-      }
-
-      @keyframes showBg {
-        0% {
-          background-color: transparent;
-          border: 1px solid transparent;
-        }
-        100% {
-          background-color: #212b38;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-      }
-
-      @keyframes showItem {
-        0% {
-          visibility: hidden;
-        }
-        100% {
-          visibility: visible;
-        }
-      }
-
-      .projects__container {
-        background-color: white;
-      }
-    </style>
   </head>
-  <body
-    class="bg-gray-50 dark:bg-gray-950
-  bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
-  dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]
-  bg-no-repeat text-white px-10 md:px-28 lg:px-64 xl:px-80 2xl:px-[35rem] py-5 font-body"
-  >
-    <nav
-      class="fixed left-1/2 -translate-x-1/2 top-[1.25rem] w-2/3 z-10 flex justify-center mb-24"
-    >
-      <ul
-        id="navBar"
-        class="flex justify-around space-x-5 text-xs md:text-sm px-5 py-2 rounded-full font-bold font-header text-gray-400"
-      >
-        <button class="hover:text-white transition-colors" id="experienceBtn"
-          >Experiencia</button
-        >
-        <button class="hover:text-white transition-colors" id="projectsBtn"
-          >Proyectos</button
-        >
-        <button class="hover:text-white transition-colors" id="aboutBtn"
-          >Sobre mí</button
-        >
-        <button class="hover:text-white transition-colors">
-          <a
-            href="https://wa.me/945515528?text=Hola,%20quiero%20más%20información." target="_blank"
-            >Contacto</a
-          ></button
-        >
-      </ul>
-    </nav>
-    <slot />
 
-    <!-- Flecha para volver al inicio -->
-    <div
-      id="arrow__to-top"
-      class="fixed right-6 bottom-6 invisible p-4 rounded-full bg-white/5 hover:bg-white/10 cursor-pointer transition-colors"
+  <body class="bg-background text-text antialiased">
+
+    <!-- ── Navigation ───────────────────────────────────── -->
+    <header
+      id="site-nav"
+      class="sticky top-0 left-0 right-0 z-50
+             bg-background/80 backdrop-blur-md
+             border-b border-(--border-subtle)
+             transition-[background-color,border-color] duration-150"
     >
-      <Image src={arrow} alt={"arrow"} width={30} height={30} />
-    </div>
-    <footer class="text-center text-gray-400 text-xs md:text-sm">
-      © {act_year} Todos los derechos reservados
+      <div class="max-w-(--container-max) mx-auto px-(--container-px)">
+        <div class="flex h-16 items-center justify-between">
+
+          <!-- Logo -->
+          <a
+            href="#home"
+            class="font-header font-bold text-xl text-primary tracking-tight"
+          >
+            Joseph<span class="text-accent">.</span>
+          </a>
+
+          <!-- Desktop nav -->
+          <nav class="hidden md:flex items-center gap-8" aria-label="Menú principal">
+            <a href="#about"      class="text-sm font-medium text-secondary hover:text-text transition-colors duration-150">Sobre Mí</a>
+            <a href="#skills"     class="text-sm font-medium text-secondary hover:text-text transition-colors duration-150">Stack</a>
+            <a href="#projects"   class="text-sm font-medium text-secondary hover:text-text transition-colors duration-150">Proyectos</a>
+            <a href="#experience" class="text-sm font-medium text-secondary hover:text-text transition-colors duration-150">Experiencia</a>
+            <a
+              href="#contact"
+              class="text-sm font-medium px-4 py-2 bg-primary text-white
+                     rounded-lg hover:opacity-90 transition-opacity duration-150
+                     shadow-sm"
+            >
+              Contacto
+            </a>
+            <button
+              id="dark-mode-toggle"
+              aria-label="Alternar modo oscuro"
+              aria-pressed="false"
+              class="p-1 text-secondary hover:text-primary transition-colors duration-150 cursor-pointer"
+            >
+              <Icon id="icon-moon" name="ion:moon-outline"   width={18} height={18} />
+              <Icon id="icon-sun"  name="ion:sunny-outline"  width={18} height={18} class="hidden" />
+            </button>
+          </nav>
+
+          <!-- Mobile menu button -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 text-secondary hover:text-text transition-colors"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+          >
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile nav -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden pb-5 border-t border-(--border-subtle) pt-4"
+        >
+          <nav class="flex flex-col gap-3" aria-label="Menú móvil">
+            <a href="#about"      class="text-sm font-medium text-secondary hover:text-text transition-colors">Sobre Mí</a>
+            <a href="#skills"     class="text-sm font-medium text-secondary hover:text-text transition-colors">Stack</a>
+            <a href="#projects"   class="text-sm font-medium text-secondary hover:text-text transition-colors">Proyectos</a>
+            <a href="#experience" class="text-sm font-medium text-secondary hover:text-text transition-colors">Experiencia</a>
+            <a href="#contact"    class="text-sm font-medium text-accent">Contacto</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- ── Main content ─────────────────────────────────── -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- ── Footer ───────────────────────────────────────── -->
+    <footer class="bg-primary text-white/60 border-t border-white/10">
+      <div
+        class="max-w-[var(--container-max)] mx-auto px-[var(--container-px)]
+               py-10 flex flex-col md:flex-row justify-between items-center gap-4"
+      >
+        <span class="font-header font-bold text-background  text-lg">
+          Joseph<span class="text-accent">.</span>
+        </span>
+        <p class="text-sm text-center text-background">
+          &copy; {year} Joseph Dyron Huayra Puma. Todos los derechos reservados.
+        </p>
+        <p class="text-sm text-background/40">Construido con Astro · TailwindCSS</p>
+      </div>
     </footer>
   </body>
 </html>
+
 <script>
-  import "aos/dist/aos.css"; // Importa los estilos de AOS
+  import "aos/dist/aos.css";
   import AOS from "aos";
 
-  // Inicializamos la librería AOS
-  AOS.init();
+  AOS.init({ once: true, duration: 500, offset: 72, easing: "ease-out" });
+
+  // Mobile menu toggle
+  const btn  = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const darkToggle = document.getElementById("dark-mode-toggle");
+  const modeValue = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Selección de botones
-    const experienceBtn = document.querySelector("#experienceBtn");
-    const projectsBtn = document.querySelector("#projectsBtn");
-    const aboutBtn = document.querySelector("#aboutBtn");
-
-    // Selección de secciones
-    const experience = document.querySelector("#experience");
-    const projects = document.querySelector("#projects");
-    const about = document.querySelector("#about");
-
-    //Flecha para arriba
-    const arrowBtn = document.querySelector("#arrow__to-top");
-
-    // Selección de contenedores | secciones
-    const experienceContainer = document.querySelector(
-      ".experience__container"
-    );
-    const projectsContainer = document.querySelector(".projects__container");
-    const aboutContainer = document.querySelector(".about__container");
-
-    // Unión de elementos
-    const btns = [experienceBtn, projectsBtn, aboutBtn];
-    const elements = [experience, projects, about];
-    const containers = [experienceContainer, projectsContainer, aboutContainer];
-
-    // Eventos para el desplazamiento suave a las secciones
-    btns.forEach((btn, index) => {
-      btn?.addEventListener("click", () => {
-        elements[index]?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
-        });
-      });
-    });
-
-    // Evento para volver al inicio
-    arrowBtn?.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => { 
-        let entryIndex = containers.indexOf(entry.target);
-
-        if (entry.isIntersecting) {
-          btns[entryIndex]?.classList.add("text-white");
-        } else {
-          btns[entryIndex]?.classList.remove("text-white");
-        }
-      });
-    });
-
-    containers.forEach((container) => {
-      if (container) {
-        observer.observe(container);
-      }
-    });
+    document.documentElement.classList.toggle("dark", modeValue === "dark");
+    darkToggle.setAttribute("aria-pressed", String(modeValue === "dark"));
   });
+
+  btn?.addEventListener("click", () => {
+    const isHidden = menu?.classList.toggle("hidden");
+    btn.setAttribute("aria-expanded", String(!isHidden));
+  });
+
+  // Close mobile menu on nav link click
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => menu.classList.add("hidden"));
+  });
+
+  const iconMoon = document.getElementById("icon-moon");
+  const iconSun  = document.getElementById("icon-sun");
+
+  function applyTheme(isDark: boolean) {
+    document.documentElement.classList.toggle("dark", isDark);
+    darkToggle?.setAttribute("aria-pressed", String(isDark));
+    iconMoon?.classList.toggle("hidden", isDark);
+    iconSun?.classList.toggle("hidden", !isDark);
+  }
+
+  // Aplicar tema guardado al cargar
+  const saved = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(saved === "dark" || (!saved && prefersDark));
+
+  // Toggle al hacer click
+  darkToggle?.addEventListener("click", () => {
+    const isDark = !document.documentElement.classList.contains("dark");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+    applyTheme(isDark);
+  });
+
 </script>

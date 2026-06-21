@@ -1,0 +1,3 @@
+# fonts
+Place `.woff2` custom font files here.
+Named: `{family-name}-{weight}.woff2` (e.g. `montserrat-700.woff2`).

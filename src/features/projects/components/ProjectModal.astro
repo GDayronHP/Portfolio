@@ -1,0 +1,456 @@
+---
+import { Icon } from "astro-icon/components";
+
+---
+
+<!-- ── Overlay ─────────────────────────────────────────────────────────── -->
+<div
+  id="project-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  class="hidden fixed inset-0 z-200 items-center justify-center overflow-hidden py-6 px-4 bg-(--surface-overlay) backdrop-blur-sm opacity-0 transition-opacity duration-220"
+>
+  <!-- Inner card -->
+  <div
+    id="modal-card"
+    class="relative w-full max-w-250 rounded-xl overflow-y-auto bg-surface border border-(--border-default) shadow-[0_24px_64px_rgb(0_0_0/0.35)] translate-y-4 transition-transform duration-220 h-full max-h-250 "
+  >
+    <!-- ── Carousel ──────────────────────────────────────────────────── -->
+    <div id="modal-carousel-wrap" class="relative border-b border-(--border-default) h-5/12">
+      <!-- Placeholder shown when no images -->
+      <div
+        id="modal-carousel-placeholder"
+        class="w-full h-full bg-surface-muted flex items-center justify-center"
+      >
+        <span class="text-[0.8rem] text-secondary opacity-60">
+          Capturas próximamente
+        </span>
+      </div>
+
+      <!-- Slide viewport (hidden until images present) -->
+      <div id="modal-carousel-viewport" class="h-full overflow-hidden hidden">
+        <div id="modal-carousel-track" class="h-full flex transition-transform duration-300">
+          <!-- slides injected by JS -->
+        </div>
+      </div>
+
+      <!-- Prev / Next buttons (hidden when ≤1 image) -->
+      <button
+        id="carousel-prev"
+        aria-label="Imagen anterior"
+        class="hidden absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-surface border border-(--border-default) cursor-pointer items-center justify-center text-text text-xl leading-none z-2"
+      >&#8249;</button>
+
+      <button
+        id="carousel-next"
+        aria-label="Siguiente imagen"
+        class="hidden absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-surface border border-(--border-default) cursor-pointer items-center justify-center text-text text-xl leading-none z-2"
+      >&#8250;</button>
+
+      <!-- Dot indicators -->
+      <div
+        id="carousel-dots"
+        class="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex gap-1.5 z-2"
+      ></div>
+    </div>
+
+    <!-- ── Header ────────────────────────────────────────────────────── -->
+    <div class="pt-6 pb-5 px-7 border-b border-(--border-subtle) flex items-start justify-between gap-4">
+      <div class="flex-1 min-w-0">
+        <div id="modal-tags" class="flex flex-wrap gap-1.5 mb-2.5"></div>
+        <h2
+          id="modal-title"
+          class="font-header font-bold text-xl text-text leading-tight tracking-tight m-0"
+        ></h2>
+      </div>
+      <button
+        id="modal-close"
+        aria-label="Cerrar"
+        class="shrink-0 w-8 h-8 rounded-full bg-surface-muted border border-(--border-default) cursor-pointer flex items-center justify-center text-secondary text-[1.1rem] leading-none"
+      ><Icon name="ion:close-outline" width={18} height={18} /></button>
+    </div>
+
+    <!-- ── Body ──────────────────────────────────────────────────────── -->
+    <div class="py-6 px-7 flex flex-col gap-6">
+
+      <!-- Description -->
+      <div>
+        <p class="modal-section-label">Descripción</p>
+        <p id="modal-description" class="text-[0.9rem] leading-[1.65] text-text m-0"></p>
+      </div>
+
+      <!-- Problem (conditionally shown) -->
+      <div id="modal-problem" class="hidden">
+        <p class="modal-section-label">Problema que resuelve</p>
+        <ul id="modal-problem-list" class="m-0 p-0 list-none flex flex-col gap-2"></ul>
+      </div>
+
+      <!-- Participation + Highlights grid -->
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <p class="modal-section-label">Mi participación</p>
+          <ul id="modal-participation-list" class="m-0 p-0 list-none flex flex-col gap-2"></ul>
+        </div>
+        <div>
+          <p class="modal-section-label">Aspectos destacados</p>
+          <ul id="modal-highlights-list" class="m-0 p-0 list-none flex flex-col gap-2"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Footer ────────────────────────────────────────────────────── -->
+    <div
+      id="modal-footer"
+      class="hidden px-7 py-4 border-t border-(--border-subtle) justify-end"
+    >
+      <a
+        id="modal-link"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 px-[1.125rem] py-2 rounded-lg text-[0.8rem] font-semibold text-background bg-accent border border-accent no-underline"
+      >
+        Visitar sitio web
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+          <polyline points="15 3 21 3 21 9" />
+          <line x1="10" y1="14" x2="21" y2="3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .modal-section-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 0.625rem;
+  }
+  .modal-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.625rem;
+    border-radius: 0.375rem;
+    font-size: 0.7rem;
+    font-weight: 500;
+    background: var(--surface-muted);
+    color: var(--secondary);
+    border: 1px solid var(--border-subtle);
+  }
+  .modal-slide {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 100%;
+    min-width: 0;
+    height: 100%;
+    padding: 1.5rem;
+    background: var(--surface-muted);
+    cursor: pointer;
+    overflow: hidden;
+
+    & .modal-slide-inner {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    & .modal-slide-inner img {
+      max-width: 100%;
+      max-height: 100%;
+      padding: 0 2rem;
+      display: block;
+      transition: transform 300ms cubic-bezier(0, 0, 0.2, 1), filter 300ms ease;
+    }
+
+    & .modal-slide-inner:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+  }
+
+  .modal-dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 9999px;
+    background: var(--secondary);
+    opacity: 0.45;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: width 200ms ease, opacity 200ms ease;
+  }
+  .modal-dot.is-active {
+    width: 1.25rem;
+    background: var(--accent);
+    opacity: 1;
+  }
+  .modal-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-size: 0.825rem;
+    line-height: 1.55;
+  }
+  .modal-bullet--accent { color: var(--text); }
+  .modal-bullet--muted  { color: var(--secondary); }
+  .modal-bullet__dot {
+    margin-top: 0.4rem;
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .modal-bullet__dot--accent { background: var(--accent); }
+  .modal-bullet__dot--muted  { background: var(--secondary); opacity: 0.6; }
+  .modal-problem-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+    font-size: 0.875rem;
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .modal-problem-dot {
+    margin-top: 0.45rem;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .modal-slide-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+  }
+  .modal-slide-inner:hover .modal-slide-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .modal-slide-open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.125rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transform: translateY(8px);
+    transition: background 150ms ease, transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .modal-slide-inner:hover .modal-slide-open-btn {
+    transform: translateY(0);
+  }
+  .modal-slide-open-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+  }
+</style>
+
+<script>
+  // ── Types (stripped at compile time) ──────────────────────────────────
+  interface ModalProject {
+    title: string;
+    description: string;
+    tags: string[];
+    highlights: string[];
+    problem: string[];
+    participation: string[];
+    pageLink?: string;
+    carouselImages: string[];
+  }
+
+  // ── Carousel state ─────────────────────────────────────────────────────
+  let currentSlide = 0;
+  let totalSlides = 0;
+
+  // ── DOM refs ────────────────────────────────────────────────────────────
+  const modal        = document.getElementById("project-modal")!;
+  const card         = document.getElementById("modal-card")!;
+  const closeBtn     = document.getElementById("modal-close")!;
+  const titleEl      = document.getElementById("modal-title")!;
+  const tagsEl       = document.getElementById("modal-tags")!;
+  const descEl       = document.getElementById("modal-description")!;
+  const problemWrap  = document.getElementById("modal-problem")!;
+  const problemList  = document.getElementById("modal-problem-list")!;
+  const partList     = document.getElementById("modal-participation-list")!;
+  const hlList       = document.getElementById("modal-highlights-list")!;
+  const footerEl     = document.getElementById("modal-footer")!;
+  const linkEl       = document.getElementById("modal-link") as HTMLAnchorElement;
+  const placeholder  = document.getElementById("modal-carousel-placeholder")!;
+  const viewport     = document.getElementById("modal-carousel-viewport")!;
+  const track        = document.getElementById("modal-carousel-track")!;
+  const prevBtn      = document.getElementById("carousel-prev")!;
+  const nextBtn      = document.getElementById("carousel-next")!;
+  const dotsEl       = document.getElementById("carousel-dots")!;
+
+  // ── Helpers ─────────────────────────────────────────────────────────────
+  function dot(active: boolean, idx: number): string {
+    return `<button class="modal-dot${active ? " is-active" : ""}" data-idx="${idx}" aria-label="Ir a imagen ${idx + 1}"></button>`;
+  }
+
+  function bulletItem(text: string, accent: boolean): string {
+    const type = accent ? "accent" : "muted";
+    return `<li class="modal-bullet modal-bullet--${type}">
+      <span class="modal-bullet__dot modal-bullet__dot--${type}"></span>
+      ${text}
+    </li>`;
+  }
+
+  // ── Carousel ────────────────────────────────────────────────────────────
+  function setupCarousel(images: string[], title: string) {
+    currentSlide = 0;
+    totalSlides = images.length;
+
+    if (images.length === 0) {
+      placeholder.style.display = "flex";
+      viewport.style.display = "none";
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      dotsEl.innerHTML = "";
+      return;
+    }
+
+    // Build slides
+    track.innerHTML = images
+      .map(
+        (src, i) =>
+          `<div class="modal-slide">
+            <div class="modal-slide-inner"> 
+              <img src="${src}" alt="${title} — captura ${i + 1}" loading="lazy" />
+              <div class="modal-slide-overlay">
+                <a href="${src}" target="_blank" rel="noopener noreferrer" class="modal-slide-open-btn">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Ver imagen completa
+                </a>
+              </div>
+            </div>
+          </div>`
+      )
+      .join("");
+
+    placeholder.style.display = "none";
+    viewport.style.display = "block";
+
+    if (images.length > 1) {
+      prevBtn.style.display = "flex";
+      nextBtn.style.display = "flex";
+      dotsEl.innerHTML = images.map((_, i) => dot(i === 0, i)).join("");
+      updateCarousel();
+    } else {
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      dotsEl.innerHTML = "";
+      track.style.transform = "translateX(0)";
+    }
+  }
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dotsEl.querySelectorAll<HTMLButtonElement>(".modal-dot").forEach((d, i) => {
+      d.classList.toggle("is-active", i === currentSlide);
+    });
+  }
+
+  // ── Open / close ────────────────────────────────────────────────────────
+  function openModal(project: ModalProject) {
+    titleEl.textContent = project.title;
+    descEl.textContent = project.description;
+
+    tagsEl.innerHTML = project.tags
+      .map((t) => `<span class="modal-tag">${t}</span>`)
+      .join("");
+
+    setupCarousel(project.carouselImages, project.title);
+
+    if (project.problem.length > 0) {
+      problemList.innerHTML = project.problem
+        .map((p) => `<li class="modal-problem-item"><span class="modal-problem-dot"></span>${p}</li>`)
+        .join("");
+      problemWrap.style.display = "block";
+    } else {
+      problemWrap.style.display = "none";
+    }
+
+    partList.innerHTML = project.participation.map((p) => bulletItem(p, false)).join("");
+    hlList.innerHTML   = project.highlights.map((h) => bulletItem(h, true)).join("");
+
+    if (project.pageLink) {
+      linkEl.href = project.pageLink;
+      footerEl.style.display = "flex";
+    } else {
+      footerEl.style.display = "none";
+    }
+
+    document.body.style.overflow = "hidden";
+    modal.style.display = "flex";
+    // Trigger transition
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        modal.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      })
+    );
+  }
+
+  function closeModal() {
+    modal.style.opacity = "0";
+    card.style.transform = "translateY(16px)";
+    setTimeout(() => {
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+    }, 220);
+  }
+
+  // ── Event listeners ─────────────────────────────────────────────────────
+  document.addEventListener("open-project", (e) => {
+    openModal((e as CustomEvent<ModalProject>).detail);
+  });
+
+  closeBtn.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.style.display !== "none") closeModal();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+  });
+
+  dotsEl.addEventListener("click", (e) => {
+    const btn = (e.target as HTMLElement).closest<HTMLButtonElement>(".modal-dot");
+    if (btn) {
+      const idx = parseInt(btn.dataset.idx ?? "0", 10);
+      currentSlide = idx;
+      updateCarousel();
+    }
+  });
+</script>

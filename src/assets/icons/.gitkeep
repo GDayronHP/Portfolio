@@ -1,0 +1,4 @@
+# icons
+Place global SVG icon files here.
+Named: kebab-case (e.g. `arrow-right.svg`).
+Feature-specific icons live inside `features/<name>/assets/`.

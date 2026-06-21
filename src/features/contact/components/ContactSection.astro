@@ -1,0 +1,39 @@
+---
+import Section from "../../../components/layout/Section.astro";
+import Container from "../../../components/layout/Container.astro";
+import Button from "../../../components/ui/Button.astro";
+---
+
+<Section id="contact" muted>
+  <Container narrow>
+    <div class="text-center" data-aos="fade-up" data-aos-duration="600">
+      <p class="eyebrow mb-3">Siguiente Paso</p>
+      <h2
+        class="font-header font-bold text-3xl md:text-4xl text-primary
+               leading-tight tracking-tight mb-5"
+      >
+        ¿Trabajamos juntos?
+      </h2>
+      <p class="text-secondary leading-relaxed mb-10 max-w-lg mx-auto">
+        Estoy abierto a nuevas oportunidades. Ya sea un proyecto empresarial,
+        una integración de IA o simplemente quieres hablar sobre tecnología —
+        respondo rápido.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+        <Button
+          href="https://wa.me/945515528?text=Hola,%20vi%20tu%20portafolio%20y%20quiero%20hablar%20contigo."
+          variant="primary"
+        >
+          Escribir por WhatsApp
+        </Button>
+        <Button
+          href="mailto:josephdyronhuayrapuma@gmail.com"
+          variant="ghost"
+        >
+          Enviar un correo
+        </Button>
+      </div>
+    </div>
+  </Container>
+</Section>
