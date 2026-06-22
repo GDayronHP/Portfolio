@@ -92,8 +92,9 @@ export const projects: Project[] = [
       "Facilita la gestión de ciclos y plantillas.",
     ],
     participation: [
-      "Desarrollo frontend y backend (aproximadamente 50% del proyecto).",
+      "Desarrollo frontend y backend",
       "Despliegue de frontend y API.",
+      "Manejo de base de datos",
       "Mantenimiento y evolución continua de la plataforma.",
     ],
     pageLink: "https://empleados.sapiensconsultingperu.com/evaluaciones/login/",

@@ -158,6 +158,8 @@ import { Icon } from "astro-icon/components";
       cursor: pointer;
       overflow: hidden;
       height: 100%;
+      display: flex;
+      align-items: center;
     }
 
     & .modal-slide-inner img {
@@ -369,7 +371,7 @@ import { Icon } from "astro-icon/components";
                   </svg>
                   Ver imagen
                 </span>
-                <a href="${src}" target="_blank" rel="noopener noreferrer"/>
+                <a class="h-full" href="${src}" target="_blank" rel="noopener noreferrer"/>
               </div>
             </div>
           </div>`
