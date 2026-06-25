@@ -361,6 +361,7 @@ import { Icon } from "astro-icon/components";
         (src, i) =>
           `<div class="modal-slide">
             <div class="modal-slide-inner"> 
+              <a class="h-full flex items-center" href="${src}" target="_blank" rel="noopener noreferrer">
               <img src="${src}" alt="${title} — captura ${i + 1}" loading="lazy" />
               <div class="modal-slide-overlay">
                 <span class="modal-slide-badge" aria-hidden="true">
@@ -371,8 +372,8 @@ import { Icon } from "astro-icon/components";
                   </svg>
                   Ver imagen
                 </span>
-                <a class="h-full flex items-center" href="${src}" target="_blank" rel="noopener noreferrer"/>
               </div>
+            </a>
             </div>
           </div>`
       )
